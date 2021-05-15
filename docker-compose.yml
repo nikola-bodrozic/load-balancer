@@ -29,3 +29,5 @@ services:
       dockerfile: Dockerfile
     ports:
       - 8080:8080
+    volumes:
+      - /home/ubuntu/workspace/load-balancer/logs:/var/log/nginx

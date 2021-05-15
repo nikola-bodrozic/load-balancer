@@ -1,6 +1,6 @@
 # nginex as LoadBalancer in front of two Node apps
 
-`docker-compose up`
+`docker-compose up -d`
 
 LoadBalancer IP is <http://localhost:8080> refresh to see hostname of docker container.
 

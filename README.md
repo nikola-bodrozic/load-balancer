@@ -2,9 +2,11 @@
 
 `docker-compose up -d`
 
-LoadBalancer IP is <http://localhost:8080> refresh to see hostname of docker container.
+LoadBalancer IP is at <http://public-ip:8080> refresh to see hostname of docker container.
 
 **/var/log/nginx/error.log** and **/var/log/nginx/access.log** are mounted in **logs/** folder
+
+You can follow Nginx logs `tail -f logs/access.log`
 
 ### Inside Node containers
 

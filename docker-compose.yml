@@ -1,0 +1,27 @@
+version: '2'
+
+services:
+
+  nodehost1:
+    container_name: nodehost1
+    build:
+      context: node1/
+      dockerfile: Dockerfile
+    ports:
+      - 3000:4000
+
+  nodehost2:
+    container_name: nodehost2
+    build:
+      context: node2/
+      dockerfile: Dockerfile
+    ports:
+      - 3001:4001
+
+  loadb:
+    container_name: loadb
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080

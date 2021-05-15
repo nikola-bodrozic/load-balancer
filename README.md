@@ -1,22 +1,26 @@
 # nginex as LoadBalancer and node as web app
 
-## Node containers
+`docker-compose up`
 
-`docker build -t nodehost1 node1`
-`docker build -t nodehost2 node2`
 
-`docker run -d -p 3000:4000 --name nodehost1 nodehost1`
-`docker run -d -p 3001:4001 --name nodehost2 nodehost2`
+<localhost:8080> refresh to see hostname of docker container.
+
+## Inside Node containers
 
 
 ```shell
-$ curl localhost:3000
-Hello World from 968919169dd0
-$ curl localhost:3001
-Hello World from 7bee901c46e9
+root@2fda3c99b9d6:# curl nodehost2:4001
+Hello World from 23ce97f3b2bbroot@2fda3c99b9d6
+
+root@23ce97f3b2bb:# curl nodehost1:4000
+Hello World from 2fda3c99b9d6root@23ce97f3b2bb
 ```
 
-## Loadbalancer
+## Outside Docker Stack
 
-`docker build -t loadb .`
-`docker run -d -p 8080:8080 --name loadb loadb`
+```shell
+$ curl localhost:3000
+Hello World from 2fda3c99b9d6 
+curl localhost:3001
+Hello World from 23ce97f3b2bb
+```

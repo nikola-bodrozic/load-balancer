@@ -9,7 +9,9 @@ services:
       dockerfile: Dockerfile
     ports:
       - 3000:4000
-
+    depends_on:
+      - loadb
+      
   nodehost2:
     container_name: nodehost2
     build:
@@ -17,6 +19,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - 3001:4001
+    depends_on:
+      - loadb
 
   loadb:
     container_name: loadb

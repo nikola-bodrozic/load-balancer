@@ -40,3 +40,5 @@ services:
       dockerfile: Dockerfile
     ports:
       - 8080:8080
+    volumes:
+      - ./load_balancer:/var/log/nginx  

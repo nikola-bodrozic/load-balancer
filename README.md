@@ -13,12 +13,11 @@ You can follow Nginx logs `tail -f reverse_proxy/access.log`
 ```shell
 $ docker image ls
 REPOSITORY                TAG                  IMAGE ID      
-load-balancer_nodehost1   latest               4af15aa4ef44   
+nodehost1   latest               4af15aa4ef44   
 
 $ docker-compose rm -fs nodehost1
 $ sed -i 's/aloha/howdy/g' node1/app.js
-$ docker build -t load-balancer_nodehost1 node1/
-$ docker-compose up -d
+$ docker build -t nodehost1 node1/
 ```
 
 Repeat procedure for node2.
@@ -26,7 +25,12 @@ Repeat procedure for node2.
 ```shell
 $ docker-compose rm -fs nodehost2
 $ sed -i 's/aloha/howdy/g' node2/app.js
-$ docker build -t load-balancer_nodehost2 node2/
+$ docker build -t nodehost2 node2/
+```
+
+at the end
+
+```shell
 $ docker-compose up -d
 ```
 

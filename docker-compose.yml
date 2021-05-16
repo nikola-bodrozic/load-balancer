@@ -19,8 +19,6 @@ services:
     build:
       context: node1/
       dockerfile: Dockerfile
-    ports:
-      - 3000:4000
     depends_on:
       - loadb
       
@@ -30,11 +28,11 @@ services:
     build:
       context: node2/
       dockerfile: Dockerfile
-    ports:
-      - 3001:4001
     depends_on:
       - loadb
 
+
+  # load balancer
   loadb:
     container_name: loadb
     build:

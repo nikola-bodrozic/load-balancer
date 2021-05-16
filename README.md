@@ -16,21 +16,17 @@ REPOSITORY                TAG                  IMAGE ID
 nodehost1   latest               4af15aa4ef44   
 
 $ docker-compose rm -fs nodehost1
-$ sed -i 's/aloha/howdy/g' node1/app.js
+$ sed -i 's/Hello/howdy/g' node1/app.js
 $ docker build -t nodehost1 node1/
+$ docker-compose up -d
 ```
 
 Repeat procedure for node2.
 
 ```shell
 $ docker-compose rm -fs nodehost2
-$ sed -i 's/aloha/howdy/g' node2/app.js
+$ sed -i 's/Hello/howdy/g' node2/app.js
 $ docker build -t nodehost2 node2/
-```
-
-at the end
-
-```shell
 $ docker-compose up -d
 ```
 

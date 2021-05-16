@@ -1,8 +1,8 @@
-# nginex as LoadBalancer in front of two Node apps
+# nginex instances as LoadBalancer & proxy in front of two Node apps
 
 `docker-compose up -d`
 
-LoadBalancer IP is at <http://public-ip:8080> refresh to see hostname of docker container.
+Proxy IP is at <http://public-ip> refresh to see hostname of docker container.
 
 **/var/log/nginx/error.log** and **/var/log/nginx/access.log** are mounted in **logs/** folder
 

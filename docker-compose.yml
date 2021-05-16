@@ -2,6 +2,18 @@ version: '2'
 
 services:
 
+  reverse-proxy:
+    image: nginx:1.17.10
+    container_name: reverse_proxy_demo
+    depends_on:
+      - nodehost1
+      - nodehost2
+      - loadb
+    volumes:
+      - ./reverse_proxy/nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - 80:80
+
   nodehost1:
     container_name: nodehost1
     build:

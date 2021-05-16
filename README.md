@@ -4,9 +4,9 @@
 
 Proxy IP is at <http://public-ip> refresh to see hostname of docker container.
 
-**/var/log/nginx/error.log** and **/var/log/nginx/access.log** are mounted in **logs/** folder
+**/var/log/nginx/error.log** and **/var/log/nginx/access.log** are mounted in **reverse_proxy/** folder
 
-You can follow Nginx logs `tail -f logs/access.log`
+You can follow Nginx logs `tail -f reverse_proxy/access.log`
 
 ### Inside Node containers
 

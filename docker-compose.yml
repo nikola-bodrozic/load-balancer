@@ -37,9 +37,9 @@ services:
   loadb:
     container_name: loadb
     build:
-      context: .
+      context: load_balancer/
       dockerfile: Dockerfile
     ports:
       - 8080:8080
     volumes:
-      - /home/ubuntu/workspace/load-balancer/logs:/var/log/nginx
+      - /home/ubuntu/workspace/load-balancer/load_balancer:/var/log/nginx

@@ -1,1 +1,2 @@
-logs/*
+load_balancer/access.log
+load_balancer/error.log

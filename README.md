@@ -15,41 +15,19 @@ $ docker image ls
 REPOSITORY                TAG                  IMAGE ID      
 load-balancer_nodehost1   latest               4af15aa4ef44   
 
-docker-compose stop nodehost1
-docker-compose rm nodehost1
-docker image rmi load-balancer_nodehost1 
-```
-
-modify node1/app.js
-
-```shell
-$ cd node1/
-$ vim app.js
-$ docker build -t load-balancer_nodehost1 .
-$ cd ..
-$ docker image ls
-REPOSITORY                TAG                  IMAGE ID    
-load-balancer_nodehost1   latest               ec50dcb59bbe
-
+$ docker-compose rm -fs nodehost1
+$ sed -i 's/aloha/howdy/g' node1/app.js
+$ docker build -t load-balancer_nodehost1 node1/
 $ docker-compose up -d
-loadb is up-to-date
-reverse-proxy is up-to-date
-nodehost2 is up-to-date
-Creating nodehost1 ... done
 ```
 
 Repeat procedure for node2.
 
 ```shell
-$ cd node2/
-$ vim app.js
-$ docker build -t load-balancer_nodehost2 .
-$ cd ..
+$ docker-compose rm -fs nodehost2
+$ sed -i 's/aloha/howdy/g' node2/app.js
+$ docker build -t load-balancer_nodehost2 node2/
 $ docker-compose up -d
-loadb is up-to-date
-reverse-proxy is up-to-date
-nodehost1 is up-to-date
-Creating nodehost2 ... done
 ```
 
 ### Inside Node containers

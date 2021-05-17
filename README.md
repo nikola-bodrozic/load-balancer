@@ -8,28 +8,6 @@ Proxy IP is at <http://public-ip> refresh to see hostname of docker container.
 
 You can follow Nginx logs `tail -f reverse_proxy/access.log`
 
-### Depolyment of new microservice
-
-```shell
-$ docker image ls
-REPOSITORY                TAG                  IMAGE ID      
-nodehost1   latest               4af15aa4ef44   
-
-$ docker-compose rm -fs nodehost1
-$ sed -i 's/Hello/howdy/g' node1/app.js
-$ docker build -t nodehost1 node1/
-$ docker-compose up -d
-```
-
-Repeat procedure for node2.
-
-```shell
-$ docker-compose rm -fs nodehost2
-$ sed -i 's/Hello/howdy/g' node2/app.js
-$ docker build -t nodehost2 node2/
-$ docker-compose up -d
-```
-
 ### Inside Node containers
 
 ```shell

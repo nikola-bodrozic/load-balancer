@@ -15,7 +15,6 @@ services:
 
   nodehost1:
     container_name: nodehost1
-    image: nodehost1
     build:
       context: node1/
       dockerfile: Dockerfile
@@ -24,15 +23,12 @@ services:
       
   nodehost2:
     container_name: nodehost2
-    image: nodehost2
     build:
       context: node2/
       dockerfile: Dockerfile
     depends_on:
       - loadb
 
-
-  # load balancer
   loadb:
     container_name: loadb
     build:
@@ -40,5 +36,3 @@ services:
       dockerfile: Dockerfile
     ports:
       - 8080:8080
-    volumes:
-      - ./load_balancer:/var/log/nginx  

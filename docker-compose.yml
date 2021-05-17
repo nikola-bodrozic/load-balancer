@@ -34,3 +34,6 @@ services:
     build:
       context: load_balancer/
       dockerfile: Dockerfile
+    volumes:
+      - ./load_balancer/nginx.conf:/etc/nginx/nginx.conf
+      - ./load_balancer:/var/log/nginx

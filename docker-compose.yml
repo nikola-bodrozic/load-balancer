@@ -34,5 +34,3 @@ services:
     build:
       context: load_balancer/
       dockerfile: Dockerfile
-    ports:
-      - 8080:8080

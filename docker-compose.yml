@@ -3,7 +3,10 @@ version: '2'
 services:
 
   reverse-proxy:
-    image: nginx:1.17.10
+    #image: nginx:1.17.10
+    build:
+      context: reverse_proxy/
+      dockerfile: Dockerfile    
     container_name: reverse-proxy
     depends_on:
       - load-balancer

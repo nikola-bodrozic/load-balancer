@@ -3,11 +3,10 @@ version: '2'
 services:
 
   reverse-proxy:
-    #image: nginx:1.17.10
+    container_name: reverse-proxy
     build:
       context: reverse_proxy/
       dockerfile: Dockerfile    
-    container_name: reverse-proxy
     depends_on:
       - load-balancer
     volumes:
@@ -16,16 +15,16 @@ services:
     ports:
       - 80:80
 
-  nodehost1:
-    container_name: nodehost1
+  node1:
+    container_name: node1
     build:
       context: node1/
       dockerfile: Dockerfile
     depends_on:
       - load-balancer
       
-  nodehost2:
-    container_name: nodehost2
+  node2:
+    container_name: node2
     build:
       context: node2/
       dockerfile: Dockerfile

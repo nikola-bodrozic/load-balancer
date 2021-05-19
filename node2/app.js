@@ -5,7 +5,7 @@ var hostname = os.hostname();
 
 app.get('/', (req, res) => {
   console.log(req.headers)
-  res.send('Hello World from ' + hostname)
+  res.send('Hello World from node2, host names is ' + hostname) 
 })
 
-app.listen(4001, () => console.log('Server ready'))
+app.listen(4002, () => console.log('Server ready'))

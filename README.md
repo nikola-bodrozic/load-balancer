@@ -37,11 +37,3 @@ docker-compose rm -s -v node1
 vim node1/app.js
 docker-compose up -d --build
 ```
-
-### Portainer (optional)
-
-```shell
-docker volume create portainer_data
-docker run -d -p 9038:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce
-docker container stop portainer
-```

@@ -26,6 +26,18 @@ ping -c 2 reverse-proxy
 exit
 ```
 
+### Blue/Green Deployment
+
+```shell
+docker-compose rm -s -v node2
+vim node2/app.js
+docker-compose up -d --build
+
+docker-compose rm -s -v node1
+vim node1/app.js
+docker-compose up -d --build
+```
+
 ### Portainer (optional)
 
 ```shell

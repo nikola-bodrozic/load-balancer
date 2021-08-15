@@ -36,19 +36,15 @@ docker-compose up -d --build
 docker-compose rm -s -v node1
 vim node1/app.js
 docker-compose up -d --build
-
-docker-compose rm -s -v node1
-vim node3/app.js
-docker-compose up -d --build
 ```
 
 ### Canary testing
 
 ```shell
-curl http://158.101.172.163/
+curl http://your.ip.address.here/
 ```
 
-when user agent is cURL load balancer will forward http request to node3 - canary container. For other user agents http requests will be forwarded to node1 or node2. See nginx.conf for load-balancer container.
+when user agent is cURL load balancer will forward http request to node2 - canary container. For other user agents http requests will be forwarded to node1.
 
 ```shell
     map $http_user_agent  $express {
@@ -56,6 +52,4 @@ when user agent is cURL load balancer will forward http request to node3 - canar
         ~curl         "canary";
     }
 ``` 
-
-
 

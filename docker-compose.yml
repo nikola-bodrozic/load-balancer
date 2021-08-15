@@ -31,6 +31,14 @@ services:
     depends_on:
       - load-balancer
 
+  node3:
+    container_name: node3
+    build:
+      context: node3/
+      dockerfile: Dockerfile
+    depends_on:
+      - load-balancer
+      
   load-balancer:
     container_name: load-balancer
     build:

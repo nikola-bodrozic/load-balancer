@@ -1,16 +1,8 @@
-# NGINX instances as Load Balancer & Reverse Proxy in front of two Node containers
+# NGINX container runs as Load Balancer & Reverse Proxy in front of two Node containers
 
 `docker-compose up -d`
 
 Proxy IP is at <http://public-ip> refresh to see hostname of docker container.
-
-reverse-proxy logs
-**/var/log/nginx/error.log** and **/var/log/nginx/access.log** are in **reverse_proxy/** folder on host
-
-load-balancer logs
-**/var/log/nginx/error.log** and **/var/log/nginx/access.log** are in **load_balancer/** folder on host
-
-You can follow Nginx logs `tail -f reverse_proxy/access.log`
 
 ### Connectivity inside Docker stack
 
@@ -22,7 +14,6 @@ exit
 docker exec -it load-balancer /bin/ash
 ping -c 2 node1:4001
 ping -c 2 node2:4002
-ping -c 2 reverse-proxy
 exit
 ```
 

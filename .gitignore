@@ -1,4 +1,2 @@
-reverse_proxy/access.log
-reverse_proxy/error.log
 load_balancer/access.log
 load_balancer/error.log

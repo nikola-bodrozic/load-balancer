@@ -1,8 +1,8 @@
-# NGINX container runs as Load Balancer & Reverse Proxy in front of two Node containers
+# NGINX container runs as Load Balancer in front of two Node containers
 
 `docker-compose up -d`
 
-Proxy IP is at <http://public-ip> refresh to see hostname of docker container.
+Load Balancer is at <http://your.ip.address.here/> refresh to see hostname of docker container.
 
 ### Connectivity inside Docker stack
 
@@ -19,17 +19,15 @@ exit
 
 ### Blue/Green Deployment
 
+start blue/green deployment - deploy canary container
+
 ```shell
 docker-compose rm -s -v node2
 vim node2/app.js
 docker-compose up -d --build
-
-docker-compose rm -s -v node1
-vim node1/app.js
-docker-compose up -d --build
 ```
 
-### Canary testing
+Canary testing
 
 ```shell
 curl http://your.ip.address.here/
@@ -44,3 +42,10 @@ when user agent is cURL load balancer will forward http request to node2 - canar
     }
 ``` 
 
+finish blue/green deployment
+
+```shell
+docker-compose rm -s -v node1
+vim node1/app.js
+docker-compose up -d --build
+```

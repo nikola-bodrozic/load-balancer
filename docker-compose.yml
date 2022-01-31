@@ -2,14 +2,16 @@ version: '2'
 
 services:
 
-  load-balancer:
-    container_name: load-balancer
+  reverse-proxy:
+    container_name: reverse-proxy
     build:
-      context: load_balancer/
+      context: reverse_proxy/
       dockerfile: Dockerfile    
+    depends_on:
+      - load-balancer
     volumes:
-      - ./load_balancer/nginx.conf:/etc/nginx/nginx.conf
-      - ./load_balancer:/var/log/nginx  
+      - ./reverse_proxy/nginx.conf:/etc/nginx/nginx.conf
+      - ./reverse_proxy:/var/log/nginx  
     ports:
       - 80:80
 
@@ -30,3 +32,12 @@ services:
       dockerfile: Dockerfile
     depends_on:
       - load-balancer
+      
+  load-balancer:
+    container_name: load-balancer
+    build:
+      context: load_balancer/
+      dockerfile: Dockerfile
+    volumes:
+      - ./load_balancer/nginx.conf:/etc/nginx/nginx.conf
+      - ./load_balancer:/var/log/nginx

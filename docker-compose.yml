@@ -15,7 +15,7 @@ services:
     ports:
       - 80:80
 
-  # prod container
+  # prod container 1
   node1:
     container_name: node1
     build:
@@ -24,7 +24,7 @@ services:
     depends_on:
       - load-balancer
   
-  # canary container
+  # prod container 2
   node2:
     container_name: node2
     build:
@@ -32,6 +32,15 @@ services:
       dockerfile: Dockerfile
     depends_on:
       - load-balancer
+
+  # canary
+  node3:
+    container_name: node3
+    build:
+      context: node3/
+      dockerfile: Dockerfile
+    depends_on:
+      - load-balancer  
       
   load-balancer:
     container_name: load-balancer

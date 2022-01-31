@@ -15,27 +15,10 @@ You can follow Nginx logs `tail -f reverse_proxy/access.log`
 ### Connectivity inside Docker stack
 
 ```shell
-docker exec -it node1 /bin/ash
-ping -c 2 node2:4002
-ping -c 2 load-balancer:8080
-exit
-docker exec -it load-balancer /bin/ash
+docker exec -it node2 /bin/ash
 ping -c 2 node1:4001
-ping -c 2 node2:4002
-ping -c 2 reverse-proxy
-exit
-```
-
-### Blue/Green Deployment
-
-```shell
-docker-compose rm -s -v node2
-vim node2/app.js
-docker-compose up -d --build
-
-docker-compose rm -s -v node1
-vim node1/app.js
-docker-compose up -d --build
+ping -c 2 node3:4003
+ping -c 2 load-balancer:8080
 ```
 
 ### Canary testing
@@ -53,3 +36,18 @@ when user agent is cURL load balancer will forward http request to node2 - canar
     }
 ``` 
 
+### Blue/Green Deployment
+
+If we are happy with canary we can copy app.js file to node1/ and node2/ folders and run:
+
+```shell
+docker-compose rm -s -v node2
+vim node2/app.js
+docker-compose up -d --build
+
+docker-compose rm -s -v node1
+vim node1/app.js
+docker-compose up -d --build
+```
+
+This can be automated using CI/CD tools such as Jenkins and GitHub web hooks.
